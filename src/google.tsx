@@ -2,13 +2,9 @@ import {createOverlayRender} from 'roamjs-components/util'
 import {Classes, Dialog} from '@blueprintjs/core'
 
 import Autocomplete from 'react-google-autocomplete'
-import PlaceResult = google.maps.places.PlaceResult
 import {createPage} from 'roamjs-components/writes'
-
-
-interface AutocompletePromptProps {
-
-}
+import {reActivateBlock} from './common'
+import PlaceResult = google.maps.places.PlaceResult
 
 function buildTags(location: PlaceResult) {
 
@@ -35,17 +31,9 @@ const createPageFromLocation = (location: PlaceResult) => {
 
 }
 
-/**
- * Ideally one would find out the cursor position and then insert the name at the cursor position.
- * But that is not available in the API and would require roamToolkit like hacks
- */
-function reActivateBlock() {
-    const focusedBlock = window.roamAlphaAPI.ui.getFocusedBlock()
-    return window.roamAlphaAPI.ui.setBlockFocusAndSelection({location: focusedBlock})
-}
+interface AutocompletePromptProps {}
 
 export const AutocompletePrompt = ({onClose}: { onClose: () => void; } & AutocompletePromptProps) => {
-
     return (
         <Dialog
             isOpen={true}
@@ -91,4 +79,4 @@ export const AutocompletePrompt = ({onClose}: { onClose: () => void; } & Autocom
 }
 
 // @ts-ignore
-export const AutocompletePromptOverlay = createOverlayRender<AutocompletePromptProps>('autocomplete-prompt', AutocompletePrompt)
+export const GoogleAutocompletePromptOverlay = createOverlayRender<AutocompletePromptProps>('autocomplete-prompt', AutocompletePrompt)
