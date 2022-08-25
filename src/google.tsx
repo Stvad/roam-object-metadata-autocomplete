@@ -3,7 +3,7 @@ import {Classes, Dialog} from '@blueprintjs/core'
 
 import Autocomplete from 'react-google-autocomplete'
 import {createPage} from 'roamjs-components/writes'
-import {reActivateBlock} from './common'
+import {openPageInSidebar, reActivateBlock} from './common'
 import PlaceResult = google.maps.places.PlaceResult
 
 function buildTags(location: PlaceResult) {
@@ -31,7 +31,8 @@ const createPageFromLocation = (location: PlaceResult) => {
 
 }
 
-interface AutocompletePromptProps {}
+interface AutocompletePromptProps {
+}
 
 export const AutocompletePrompt = ({onClose}: { onClose: () => void; } & AutocompletePromptProps) => {
     return (
@@ -48,7 +49,7 @@ export const AutocompletePrompt = ({onClose}: { onClose: () => void; } & Autocom
                 <Autocomplete
                     apiKey={''}
                     onPlaceSelected={(place) => {
-                        createPageFromLocation(place)
+                        createPageFromLocation(place).then(() => openPageInSidebar(place.name))
                         window.navigator.clipboard.writeText(`[[${place.name}]]`)
 
                         onClose()

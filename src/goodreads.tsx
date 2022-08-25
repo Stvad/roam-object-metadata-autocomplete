@@ -3,7 +3,7 @@ import {Classes, Dialog} from '@blueprintjs/core'
 import {Suggest} from '@blueprintjs/select'
 import {useState} from 'react'
 import {createPage} from 'roamjs-components/writes'
-import {reActivateBlock} from './common'
+import {openPageInSidebar, reActivateBlock} from './common'
 
 interface AutocompletePromptProps {
 }
@@ -53,7 +53,7 @@ function createPageForBookAndAuthor(item: BookSuggestion) {
             ],
         }))
 
-    createPage({
+    return createPage({
         title: item.title,
         tree: [
             {text: `![](${item.image})`},
@@ -86,7 +86,7 @@ export const AutocompletePrompt = ({onClose}: { onClose: () => void; } & Autocom
                         setBookSuggestions(await findBooks(query))
                     }}
                     onItemSelect={(item) => {
-                        createPageForBookAndAuthor(item)
+                        createPageForBookAndAuthor(item).then(() => openPageInSidebar(item.title))
                         window.navigator.clipboard.writeText(`[[${item.title}]]`)
 
                         onClose()
