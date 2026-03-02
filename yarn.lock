@@ -5589,10 +5589,31 @@ rimraf@^3.0.0, rimraf@^3.0.2:
   dependencies:
     glob "^7.1.3"
 
+roam-api-wrappers@^0.1.0:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/roam-api-wrappers/-/roam-api-wrappers-0.1.1.tgz#128ba2643a0c6e12f77878ffb19de5fbe3f18750"
+  integrity sha512-5MchrlD1bBOJp1vn/kyLiFEv0p4s+DHUeyVFoKGJczVIGqDuCDqur/qHTsV/KJMoq+JzXPrLLQk5j/FwXYA5kA==
+  dependencies:
+    lodash "^4.17.21"
+    roamjs-components "^0.72.9"
+
 roamjs-components@^0.72.4:
   version "0.72.4"
   resolved "https://registry.yarnpkg.com/roamjs-components/-/roamjs-components-0.72.4.tgz#df7cff2f05a00a0e723326a731b548b6e089d754"
   integrity sha512-PUZs38f1Sw9JvMcayRBg8grBnx8FZBQ4cjDGj8K09MzI03U8S7Ty6pqHXIJO/rKDvky5eaxgo0ILAVxn71iUWA==
+  dependencies:
+    aws-sdk-plus "^0.5.3"
+    color "^4.0.1"
+    date-fns "^2.27.0"
+    fuzzy "^0.1.3"
+    hast-util-to-html "^7.1.3"
+    refractor "^3.3.1"
+    xregexp "^5.0.1"
+
+roamjs-components@^0.72.9:
+  version "0.72.11"
+  resolved "https://registry.yarnpkg.com/roamjs-components/-/roamjs-components-0.72.11.tgz#7928b8be935090ce9a9761c1c79d002385182e6f"
+  integrity sha512-sqrEBIazAsYacFUU5EcKMgiazYm7lSpb7m2fFJrMsLwIzr8oW/qfhPezDufY6yP3dI71RsG27mWT5GrMtIcQIw==
   dependencies:
     aws-sdk-plus "^0.5.3"
     color "^4.0.1"

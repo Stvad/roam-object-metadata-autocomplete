@@ -3,3 +3,7 @@ build
 dist
 out
 .env.local
+extension.js
+
+# Local Netlify folder
+.netlify

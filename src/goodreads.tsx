@@ -5,6 +5,8 @@ import {useState} from 'react'
 import {createPage} from 'roamjs-components/writes'
 import {openPageInSidebar, reActivateBlock} from './common'
 
+import './autocomplete-dialog.css'
+
 interface AutocompletePromptProps {
 }
 
@@ -18,6 +20,7 @@ interface BookSuggestion {
 
 const BookSuggest = Suggest.ofType<BookSuggestion>()
 
+// See more discussion/options at https://gist.github.com/jimmywarting/ac1be6ea0297c16c477e17f8fbe51347
 const corsGet = async (url: string) => fetch('https://corsproxy.io/?' + encodeURIComponent(url))
 
 const findBooks = async (name: string) => {
@@ -49,7 +52,7 @@ function createPageForBookAndAuthor(item: BookSuggestion) {
             title: it,
             tree: [
                 {text: 'isa::[[person]] [[author]]'},
-                {text: 'connection::[[public figure]]'}
+                {text: 'connection::[[public figure]]'},
             ],
         }))
 
@@ -77,9 +80,10 @@ export const AutocompletePrompt = ({onClose}: { onClose: () => void; } & Autocom
             backdropClassName={'autocomplete-dialog-backdrop'}
             className={'autocomplete-dialog'}
         >
-            <h3>GoodReads book</h3>
-
             <div className={Classes.DIALOG_BODY + ' autocomplete-dialog-body'}>
+
+                <h3>GoodReads book</h3>
+
                 <BookSuggest
                     items={bookSuggestions}
                     onQueryChange={async (query) => {

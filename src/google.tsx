@@ -6,6 +6,9 @@ import {createPage} from 'roamjs-components/writes'
 import {openPageInSidebar, reActivateBlock} from './common'
 import PlaceResult = google.maps.places.PlaceResult
 
+import './autocomplete-dialog.css'
+
+
 function buildTags(location: PlaceResult) {
 
     function removeGenericTags(tags: string[]) {
@@ -34,6 +37,7 @@ const createPageFromLocation = (location: PlaceResult) => {
 interface AutocompletePromptProps {
 }
 
+// todo can I get a type of cusine?
 export const AutocompletePrompt = ({onClose}: { onClose: () => void; } & AutocompletePromptProps) => {
     return (
         <Dialog
@@ -43,11 +47,14 @@ export const AutocompletePrompt = ({onClose}: { onClose: () => void; } & Autocom
             backdropClassName={'autocomplete-dialog-backdrop'}
             className={'autocomplete-dialog'}
         >
-            <div className={Classes.DIALOG_BODY + ' autocomplete-dialog-body'}>
+            <div
+                className={Classes.DIALOG_BODY + ' autocomplete-dialog-body'}
+            >
                 <h3>Google Maps Location</h3>
 
                 <Autocomplete
                     apiKey={''}
+                    className={'bp3-input'}
                     onPlaceSelected={(place) => {
                         createPageFromLocation(place).then(() => openPageInSidebar(place.name))
                         window.navigator.clipboard.writeText(`[[${place.name}]]`)
