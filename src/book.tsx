@@ -1,14 +1,9 @@
-import {createOverlayRender} from 'roamjs-components/util'
 import {Classes, Dialog, MenuItem} from '@blueprintjs/core'
 import {Suggest} from '@blueprintjs/select'
 import {useState, useRef, useCallback} from 'react'
-import {createPage} from 'roamjs-components/writes'
-import {openPageInSidebar, reActivateBlock} from './common'
+import {openPageInSidebar, reActivateBlock, createPage, renderOverlay} from './common'
 
 import './autocomplete-dialog.css'
-
-interface AutocompletePromptProps {
-}
 
 interface BookSuggestion {
     key: string;
@@ -86,7 +81,7 @@ function createPageForBookAndAuthor(item: BookSuggestion) {
     })
 }
 
-export const AutocompletePrompt = ({onClose}: { onClose: () => void; } & AutocompletePromptProps) => {
+export const BookAutocompletePrompt = ({onClose}: { onClose: () => void }) => {
 
     const [bookSuggestions, setBookSuggestions] = useState<BookSuggestion[]>([])
     const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -157,5 +152,4 @@ export const AutocompletePrompt = ({onClose}: { onClose: () => void; } & Autocom
     )
 }
 
-// @ts-ignore
-export const BookAutocompletePromptOverlay = createOverlayRender<AutocompletePromptProps>('book-autocomplete-prompt', AutocompletePrompt)
+export const showBookAutocomplete = () => renderOverlay(BookAutocompletePrompt)

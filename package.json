@@ -4,19 +4,14 @@
   "description": "Description for world-autocomplete-roam.",
   "main": "./build/main.js",
   "scripts": {
-    "build": "roamjs-scripts build",
-    "dev": "roamjs-scripts dev --depot",
-    "deploy": "netlify deploy --prod -s irl-complete.roam.garden -d build",
-    "prebuild:roam": "yarn install",
-    "build:roam": "roamjs-scripts build --depot"
+    "build": "roamjs-scripts build --depot",
+    "dev": "roamjs-scripts dev --depot"
   },
   "license": "MIT",
   "dependencies": {
     "@blueprintjs/core": "^4.8.0",
     "@blueprintjs/select": "^4.5.3",
-    "react-google-autocomplete": "^2.7.0",
-    "roam-api-wrappers": "^0.1.0",
-    "roamjs-components": "^0.72.4"
+    "react-google-autocomplete": "^2.7.0"
   },
   "devDependencies": {
     "@types/google.maps": "^3.49.2",
