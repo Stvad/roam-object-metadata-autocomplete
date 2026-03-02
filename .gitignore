@@ -4,6 +4,10 @@ dist
 out
 .env.local
 extension.js
+extension.js.LICENSE.txt
+.idea/
+yarn-error.log
+.env
 
 # Local Netlify folder
 .netlify
