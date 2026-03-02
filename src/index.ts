@@ -3,13 +3,13 @@ import runExtension from 'roamjs-components/util/runExtension'
 import 'roamjs-components/types'
 import {createConfigObserver} from 'roamjs-components/components/ConfigPage'
 import {GoogleAutocompletePromptOverlay} from './google'
-import {GoodReadsAutocompletePromptOverlay} from './goodreads'
+import {BookAutocompletePromptOverlay} from './book'
 
 const extensionId = 'world-autocomplete-roam'
 const CONFIG = toConfigPageName(extensionId)
 
 const mapsCommand = 'Google maps autocomplete'
-const grCommand = 'GoodReads autocomplete'
+const grCommand = 'Book autocomplete'
 
 export default runExtension({
     extensionId,
@@ -23,7 +23,7 @@ export default runExtension({
 
         window.roamAlphaAPI.ui.commandPalette.addCommand({
             label: grCommand,
-            callback: () => GoodReadsAutocompletePromptOverlay({}),
+            callback: () => BookAutocompletePromptOverlay({}),
         })
 
 
