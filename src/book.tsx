@@ -107,9 +107,11 @@ export const BookAutocompletePrompt = ({onClose}: { onClose: () => void }) => {
                 <h3>Book search</h3>
 
                 <BookSuggest
-                    items={bookSuggestions}
+                    items={bookSuggestions || []}
                     openOnKeyDown={true}
-                    popoverProps={{minimal: true, isOpen: bookSuggestions.length > 0}}
+                    popoverProps={{minimal: true}}
+                    inputProps={{placeholder: 'Type at least 2 characters to search...'}}
+                    noResults={<MenuItem disabled={true} text="No results." />}
                     onQueryChange={handleQueryChange}
                     onItemSelect={(item) => {
                         createPageForBookAndAuthor(item).then(() => openPageInSidebar(item.title))
@@ -123,8 +125,8 @@ export const BookAutocompletePrompt = ({onClose}: { onClose: () => void }) => {
                     itemRenderer={(item: BookSuggestion, {handleClick, handleFocus, modifiers}) =>
                         <MenuItem
                             key={item.key}
-                            active={modifiers.active}
                             disabled={modifiers.disabled}
+                            className={modifiers.active ? 'book-suggestion-active' : ''}
                             onClick={handleClick}
                             onFocus={handleFocus}
                             text={
