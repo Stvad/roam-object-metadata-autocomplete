@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.autocomplete-dialog .bp3-input-action {
+    display: none;
+}
+
 .book-suggestion-item {
     display: flex;
     align-items: center;

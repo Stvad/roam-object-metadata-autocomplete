@@ -108,6 +108,8 @@ export const BookAutocompletePrompt = ({onClose}: { onClose: () => void }) => {
 
                 <BookSuggest
                     items={bookSuggestions}
+                    openOnKeyDown={true}
+                    popoverProps={{minimal: true, isOpen: bookSuggestions.length > 0}}
                     onQueryChange={handleQueryChange}
                     onItemSelect={(item) => {
                         createPageForBookAndAuthor(item).then(() => openPageInSidebar(item.title))
